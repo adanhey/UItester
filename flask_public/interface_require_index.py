@@ -5,7 +5,8 @@ interfaceRequire = {
     "/createTestSteps": ['projectID', 'title', 'stepNo'],
     "/updatePublicCase": ['id', 'project_id', 'name', 'jsonData'],
     "/updateTestSteps": ['id'],
-    "/deleteTestSteps": ['id']
+    "/deleteTestSteps": ['id'],
+    "/createUnion": ['unionNo', 'name', 'projectID']
 }
 dataStyle = {
     "/deleteTestSteps": "args"

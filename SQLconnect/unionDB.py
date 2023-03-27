@@ -2,17 +2,17 @@ from flask_public.flask_public import *
 from SQLconnect.DBfile import *
 
 
-@app.route('/createTestSteps', methods=['POST'])
+@app.route('/createUnion', methods=['POST'])
 @permission
 @requires
 @data_exist_check
 @distinct_check
 @create_commit
-def create_test_steps():
+def create_union():
     return {"message": "新增成功"}
 
 
-@app.route('/updateTestSteps', methods=['POST'])
+@app.route('/updateUnion', methods=['POST'])
 @permission
 @requires
 @data_exist_check
@@ -22,7 +22,7 @@ def update_test_steps():
     return {"message": "修改成功"}
 
 
-@app.route('/deleteTestSteps', methods=['DELETE'])
+@app.route('/deleteUnion', methods=['DELETE'])
 @permission
 @requires
 @data_exist_check
@@ -31,7 +31,7 @@ def delete_test_steps():
     return {"message": "删除成功"}
 
 
-@app.route('/listTestSteps', methods=['GET'])
+@app.route('/listUnion', methods=['GET'])
 @permission
 @list_commit
 def list_test_steps():

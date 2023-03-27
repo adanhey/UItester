@@ -4,7 +4,9 @@ interfaceTableIndex = {
     "/deleteProject": "Project",
     "/createTestSteps": "TestStep",
     "/updateTestSteps": "TestStep",
-    "/deleteTestSteps": "TestStep"
+    "/deleteTestSteps": "TestStep",
+    "/listTestSteps": "TestStep",
+    "/createUnion": "TestUnion"
 }
 listBody = {
     "/createTestSteps": 100
@@ -18,6 +20,10 @@ distinctIndex = {
         "stepNo": ["projectID"],
         "title": ["projectID"]
     },
+    "/createUnion": {
+        "unionNo": ["projectID"],
+        "name": ["projectID"],
+    }
 }
 
 objectExistIndex = {
@@ -31,4 +37,7 @@ objectExistIndex = {
     "/deleteTestSteps": {
         "id": "TestStep.id"
     },
+    "/createUnion": {
+        "projectID": "Project.id",
+    }
 }

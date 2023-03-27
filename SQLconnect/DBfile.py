@@ -43,3 +43,7 @@ class TestUnion(db.Model):
     runStep = db.Column(db.JSON, nullable=False)
     projectID = db.Column(db.Integer, nullable=False)
     storage_time = db.Column(db.DateTime, default=datetime.now)
+
+
+if __name__ == "__main__":
+    print(TestStep.query.filter().order_by(TestStep.projectID).all())

@@ -200,13 +200,35 @@ def delete_commit(func):
     return inner
 
 
-# def list_select(request_path):
-#     table_index = interfaceTableIndex[request.path]
-#     select_index = interface_select[request.path]
-#     select_str = ""
-#     for pam in select_index :
-#         exec(f"{pam} = request.args.get('{pam}')")
-#         if eval(f"{pam}"):
-#             select_str += f"Project.{pam} == {pam}"
-#     result = eval(f"Project.query.filter({select_str}).all()")
-#     res = []
+def list_commit(func):
+    @wraps(func)
+    def inner():
+        select_string = ""
+        order_by = ""
+        table_index = interfaceTableIndex[request.path]
+        if request.path in likeIndex:
+            for obj in likeIndex[request.path]:
+                if obj in request.args:
+                    select_string += f"{table_index}.{obj}.like('%{request.args.get(obj)}%'),"
+        if request.path in equalIndex:
+            for obj in likeIndex[request.path]:
+                if obj in request.args:
+                    select_string += f"{table_index}.{obj} == {request.args.get(obj)},"
+        if request.path in orderByIndex and request.args.get("orderBy") in orderByIndex[request.path]:
+            order_by += f".order_by({table_index}.{request.args.get('orderBy')})"
+        print(f"{table_index}.query.filter({select_string}){order_by}.all()")
+        result = eval(f"{table_index}.query.filter({select_string}){order_by}.all()")
+        res = []
+        for i in result:
+            mid_dic = {}
+            for key, value in i.__dict__.items():
+                if key == '_sa_instance_state':
+                    pass
+                elif isinstance(value, datetime):
+                    mid_dic[key] = str(value)
+                else:
+                    mid_dic[key] = value
+            res.append(mid_dic)
+        return {"查询结果": res}
+
+    return inner

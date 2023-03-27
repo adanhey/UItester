@@ -3,5 +3,6 @@ interfaceFullData = {
                        "loginButton"],
     "/updateProject": ['name'],
     "/createTestSteps": ['stepNo', 'title', 'elementPath', 'actionDict', 'projectID'],
-    "/updateTestSteps": ['id', 'stepNo', 'title', 'elementPath', 'actionDict', 'projectID']
+    "/updateTestSteps": ['id', 'stepNo', 'title', 'elementPath', 'actionDict', 'projectID'],
+    "/createUnion": ['unionNo', 'name', 'runStep', 'projectID']
 }
