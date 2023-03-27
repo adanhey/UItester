@@ -7,7 +7,7 @@ from logger import *
 
 class PageObject:
     def __init__(self, browser='Chrome', wait_time=10, interval_time=1):
-        self.logger = TestLogger()
+        self.logger = ExecLogger()
         self.browser = eval(f"webdriver.{browser}()")
         self.logger.log_event("当前使用的浏览器：", browser)
         self.waiter = WebDriverWait(self.browser, wait_time, interval_time)
@@ -16,20 +16,19 @@ class PageObject:
         self.execTime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         os.mkdir("./mission%s" % self.execTime)
 
-    def get_url(self, url, login_dict=None):
-        self.logger.log_event("获取url", url)
-        self.browser.get(url)
+    def get_url(self, login_obj):
+        self.logger.log_event("获取url", login_obj.url)
+        self.browser.get(login_obj.url)
         self.browser.maximize_window()
-        if login_dict:
-            self.enter_word(login_dict['accountXpath'], login_dict['account'])
-            self.enter_word(login_dict['passwordXpath'], login_dict['password'])
-            if 'loginExtend' in login_dict:
-                self.click(login_dict['loginExtend'])
-            self.click(login_dict['loginButton'])
+        self.enter_word(login_obj.accountXpath, {"sendWord": login_obj.account})
+        self.enter_word(login_obj.passwordXpath, {"sendWord": login_obj.password})
+        if login_obj.loginExtend:
+            self.click(login_obj.loginExtend)
+        self.click(login_obj.loginButton)
 
     def wait_and_find(self, value, by='xpath', is_need_wait=0.2):
         self.logger.log_event("通过%s获取元素" % by, value)
-        self.waiter.until(lambda browser: browser.find_element(by=by, value=value))
+        self.waiter.until(lambda browser_waiter: browser_waiter.find_element(by=by, value=value))
         element = self.browser.find_element(by=by, value=value)
         self.currentElement = element
         if is_need_wait > 0:

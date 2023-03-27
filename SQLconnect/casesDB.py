@@ -2,39 +2,39 @@ from flask_public.flask_public import *
 from SQLconnect.DBfile import *
 
 
-@app.route('/createCaseSteps', methods=['POST'])
+@app.route('/createCases', methods=['POST'])
 @permission
 @requires
 @data_exist_check
 @distinct_check
 @create_commit
-def create_test_steps():
+def create_cases():
     return {"message": "新增成功"}
 
 
-@app.route('/updateCaseSteps', methods=['POST'])
+@app.route('/updateCases', methods=['POST'])
 @permission
 @requires
 @data_exist_check
 @distinct_check
 @update_commit
-def update_test_steps():
+def update_cases():
     return {"message": "修改成功"}
 
 
-@app.route('/deleteCaseSteps', methods=['DELETE'])
+@app.route('/deleteCases', methods=['DELETE'])
 @permission
 @requires
 @data_exist_check
 @delete_commit
-def delete_test_steps():
+def delete_cases():
     return {"message": "删除成功"}
 
 
-@app.route('/listCaseSteps', methods=['GET'])
+@app.route('/listCases', methods=['GET'])
 @permission
 @list_commit
-def list_test_steps():
+def list_cases():
     return {"message": "查询成功"}
 
 

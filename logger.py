@@ -2,7 +2,7 @@ import datetime
 import logging
 
 
-class TestLogger:
+class ExecLogger:
     def __init__(self):
         self.nowTime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         self.logger = logging.getLogger("uweb_reference")

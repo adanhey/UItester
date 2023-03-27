@@ -23,8 +23,8 @@ db = SQLAlchemy(app)
 #     loginExtend = db.Column(db.JSON, nullable=True)
 #     storage_time = db.Column(db.DateTime, default=datetime.now)
 
-# class TestStep(db.Model):
-#     __tablename__ = 'testStep'
+# class CaseStep(db.Model):
+#     __tablename__ = 'CaseStep'
 #     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 #     stepNo = db.Column(db.String(50), nullable=False)
 #     title = db.Column(db.String(50), nullable=False)
@@ -34,12 +34,22 @@ db = SQLAlchemy(app)
 #     storage_time = db.Column(db.DateTime, default=datetime.now)
 #
 #
-# class TestUnion(db.Model):
-#     __tablename__ = 'testUnion'
+# class CaseUnion(db.Model):
+#     __tablename__ = 'CaseUnion'
 #     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 #     unionNo = db.Column(db.String(50), nullable=False)
 #     name = db.Column(db.String(50), nullable=False)
 #     runStep = db.Column(db.JSON, nullable=False)
+#     projectID = db.Column(db.Integer, nullable=False)
+#     storage_time = db.Column(db.DateTime, default=datetime.now)
+
+
+# class CasesObj(db.Model):
+#     __tablename__ = 'CasesObj'
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     casesNo = db.Column(db.String(50), nullable=False)
+#     name = db.Column(db.String(50), nullable=False)
+#     runUnion = db.Column(db.JSON, nullable=False)
 #     projectID = db.Column(db.Integer, nullable=False)
 #     storage_time = db.Column(db.DateTime, default=datetime.now)
 

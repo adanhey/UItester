@@ -1,4 +1,4 @@
-testUnion = [
+CaseUnion = [
     {
         "name": "创建诉求",
         "unionNO": "createAppeal",

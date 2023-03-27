@@ -2,42 +2,84 @@ interfaceTableIndex = {
     "/createProject": "Project",
     "/updateProject": "Project",
     "/deleteProject": "Project",
-    "/createTestSteps": "TestStep",
-    "/updateTestSteps": "TestStep",
-    "/deleteTestSteps": "TestStep",
-    "/listTestSteps": "TestStep",
-    "/createUnion": "TestUnion"
+    "/listProject": "Project",
+    "/createCaseSteps": "CaseStep",
+    "/updateCaseSteps": "CaseStep",
+    "/deleteCaseSteps": "CaseStep",
+    "/listCaseSteps": "CaseStep",
+    "/createUnion": "CaseUnion",
+    "/updateUnion": "CaseUnion",
+    "/deleteUnion": "CaseUnion",
+    "/listUnion": "CaseUnion",
+    "/createCases": "CasesObj",
+    "/updateCases": "CasesObj",
+    "/deleteCases": "CasesObj",
+    "/listCases": "CasesObj",
 }
 listBody = {
-    "/createTestSteps": 100
+    "/createCaseSteps": 100
 }
 distinctIndex = {
-    "/createTestSteps": {
+    "/createProject": {"name": []},
+    "/updateProject": {"name": []},
+    "/createCaseSteps": {
         "stepNo": ["projectID"],
         "title": ["projectID"]
     },
-    "/updateTestSteps": {
+    "/updateCaseSteps": {
         "stepNo": ["projectID"],
         "title": ["projectID"]
     },
     "/createUnion": {
         "unionNo": ["projectID"],
         "name": ["projectID"],
+    },
+    "/updateUnion": {
+        "unionNo": ["projectID"],
+        "name": ["projectID"],
+    },
+    "/createCases": {
+        "casesNo": ["projectID"],
+        "name": ["projectID"],
+    },
+    "/updateCases": {
+        "casesNo": ["projectID"],
+        "name": ["projectID"],
     }
 }
 
 objectExistIndex = {
-    "/createTestSteps": {
+    "/deleteProject": {
+        "id": "Project.id"
+    },
+    "/createCaseSteps": {
         "projectID": "Project.id",
     },
-    "/updateTestSteps": {
-        "id": "TestStep.id",
+    "/updateCaseSteps": {
+        "id": "CaseStep.id",
         "projectID": "Project.id",
     },
-    "/deleteTestSteps": {
-        "id": "TestStep.id"
+    "/deleteCaseSteps": {
+        "id": "CaseStep.id"
     },
     "/createUnion": {
         "projectID": "Project.id",
-    }
+    },
+    "/updateUnion": {
+        "id": "CaseUnion.id",
+        "projectID": "Project.id",
+    },
+    "/deleteUnion": {
+        "id": "CaseUnion.id"
+    },
+    "/createCases": {
+        "projectID": "Project.id",
+    },
+    "/updateCases": {
+        "id": "CasesObj.id",
+        "projectID": "Project.id",
+    },
+    "/deleteCases": {
+        "id": "CasesObj.id"
+    },
 }

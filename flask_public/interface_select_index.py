@@ -1,8 +1,8 @@
 likeIndex = {
     "/listProject": ['name'],
-    "/listTestSteps": ['title'],
+    "/listCaseSteps": ['title'],
 }
 equalIndex = {}
 orderByIndex = {
-    "/listTestSteps": ['title', 'projectID'],
+    "/listCaseSteps": ['title', 'projectID'],
 }

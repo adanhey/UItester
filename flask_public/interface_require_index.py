@@ -1,13 +1,21 @@
 interfaceRequire = {
     "/createProject": ['url', 'name', 'account', 'password', 'accountXpath', 'passwordXpath', "loginButton"],
     "/updateProject": ['id'],
+    "/deleteProject": ['id'],
     "/importModel": ['pro_id', 'name'],
-    "/createTestSteps": ['projectID', 'title', 'stepNo'],
-    "/updatePublicCase": ['id', 'project_id', 'name', 'jsonData'],
-    "/updateTestSteps": ['id'],
-    "/deleteTestSteps": ['id'],
-    "/createUnion": ['unionNo', 'name', 'projectID']
+    "/createCaseSteps": ['projectID', 'title', 'stepNo'],
+    "/updateCaseSteps": ['id'],
+    "/deleteCaseSteps": ['id'],
+    "/createUnion": ['unionNo', 'name', 'projectID'],
+    "/updateUnion": ['id'],
+    "/deleteUnion": ['id'],
+    "/createCases": ['casesNo', 'name', 'projectID'],
+    "/updateCases": ['id'],
+    "/deleteCases": ['id'],
 }
 dataStyle = {
-    "/deleteTestSteps": "args"
+    "/deleteCaseSteps": "args",
+    "/deleteProject": "args",
+    "/deleteUnion": "args",
+    "/deleteCases": "args",
 }

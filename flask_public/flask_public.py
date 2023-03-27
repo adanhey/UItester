@@ -67,7 +67,7 @@ def base_distinct(path, data):
     table_index = interfaceTableIndex[path]
     distinct = distinctIndex[path]
     for key, value in distinct.items():
-        if value:
+        if value and (key in data):
             select_string = ""
             cons = []
             for condition in value:
@@ -75,14 +75,15 @@ def base_distinct(path, data):
                 cons.append(condition)
             if 'update' in path and key != 'id':
                 select_string += f"{table_index}.id != data['id'],"
-            if eval(
-                    f"{table_index}.query.filter({table_index}.{key} == data['{key}'],{select_string}).first()"):
+            if eval(f"{table_index}.query.filter({table_index}.{key} == data['{key}'],{select_string}).first()"):
                 return f"{cons}相同时，{key}不允许重复"
+        elif key not in data:
+            pass
         else:
             path = path.split("/")
             if eval(
-                    f"{table_index}.query.filter({table_index}.{key} == {''.join(path[1:])}).first()"):
-                return f"id不存在"
+                    f"{table_index}.query.filter({table_index}.{key} == data['{key}']).first()"):
+                return f"{key}重复"
     return None
 
 
@@ -126,6 +127,7 @@ def distinct_check(func):
 
 
 def create_commit(func):
+    @wraps(func)
     def inner():
         full_data = interfaceFullData[request.path]
         table_index = interfaceTableIndex[request.path]

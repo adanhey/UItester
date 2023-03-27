@@ -18,7 +18,7 @@ def create_union():
 @data_exist_check
 @distinct_check
 @update_commit
-def update_test_steps():
+def update_union():
     return {"message": "修改成功"}
 
 
@@ -27,14 +27,14 @@ def update_test_steps():
 @requires
 @data_exist_check
 @delete_commit
-def delete_test_steps():
+def delete_union():
     return {"message": "删除成功"}
 
 
 @app.route('/listUnion', methods=['GET'])
 @permission
 @list_commit
-def list_test_steps():
+def list_union():
     return {"message": "查询成功"}
 
 
